@@ -7,21 +7,17 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailViewController: UIViewController {
         
-//    let author: String?
-//      let title: String?
-//      let description: String?
-//      let url: String?
-//      let urlToImage: String?
-//      let publishedAt: String?
-//      let content: String?
-//
     var article: Article! {
         didSet {
             titleLabel.text = article.title
-            print(article.description)
+            authorLabel.text = article.author
+            dateLabel.text = article.publishedAt
+            imageView.setImage(urlString: article.urlToImage ?? "")
+            contentLabel.text = article.description
         }
     }
     
@@ -32,14 +28,10 @@ class DetailViewController: UIViewController {
     let dateLabel = UILabel()
     let imageView = UIImageView()
     let contentLabel = UILabel()
+    let button = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleLabel.text = "ladjf;klasdjf;kasdfkja;dslfkja;sldkfj;dlaksfjal;ksdjfkl;adsjfal;skdjfals;kdfjakl;dsjfakls;jlkfadjl;kfalsdjfasdkjfak"
-        authorLabel.text = "askldfslkdfsdlkfsd"
-        dateLabel.text = ";alkdfsj;asldkfjas;lkdfja"
-        contentLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a est eget sapien dignissim tincidunt quis at nisi. Ut vitae leo imperdiet, suscipit ipsum nec, tempor lectus. Vestibulum interdum nec orci vitae consectetur. Donec ornare ut odio ac feugiat. Aliquam odio ex, fringilla eu vestibulum non, facilisis eget mi. Sed maximus commodo blandit. Nunc ornare maximus arcu quis lobortis. Morbi at augue vitae ante fermentum placerat. Sed a urna nunc. Sed volutpat varius arcu, ut fermentum tellus imperdiet ut. Mauris porta eros et massa hendrerit, non auctor arcu accumsan. Curabitur posuere, risus in pulvinar tempus, elit mauris pellentesque mi, vel sollicitudin sem sem ut tellus. Integer quis nisi nec felis vulputate interdum hendrerit et velit. Vestibulum ligula lectus, ultricies at aliquet rhoncus, hendrerit quis tellus. Curabitur fermentum gravida massa et sodales. Donec ante dui, tincidunt non tortor eu, cursus ullamcorper nibh. Mauris ac consequat velit. Donec ac molestie mauris, et feugiat neque. Nulla sit amet nunc in tellus varius interdum eu ut ex. Nullam sed nisi nec nulla interdum ornare. Cras eu ligula quis dui convallis ultricies eget in lorem. Fusce nisl lacus, mattis quis vulputate ac, placerat eget massa. Quisque feugiat hendrerit tortor sed eleifend. Pellentesque porttitor nisi nec."
         
         navigationController?.navigationBar.prefersLargeTitles = false
         view.backgroundColor = .systemBackground
@@ -74,6 +66,11 @@ class DetailViewController: UIViewController {
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(contentLabel)
         
+        button.setTitle("Read more", for: .normal)
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(button)
+        
         let safeArea = view.safeAreaLayoutGuide
         let margin = view.layoutMarginsGuide
         
@@ -95,9 +92,21 @@ class DetailViewController: UIViewController {
             contentLabel.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
             contentLabel.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
             contentLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            contentLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            
+            button.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
+            button.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 0),
+            button.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
         
+    }
+    
+    @objc private func handleTap() {
+        if let url = URL(string: article.url ?? "") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
     }
 
 }

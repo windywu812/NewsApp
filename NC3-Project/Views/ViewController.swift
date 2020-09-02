@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         
         navigationItem.title = "Indo News"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         configureCollectionView()
         bindViewModel()
