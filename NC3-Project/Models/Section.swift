@@ -15,6 +15,7 @@ enum Section: String {
     case health
     case science
     case sports
+    case entertainment
     
     var string: String {
         switch self {
@@ -30,6 +31,8 @@ enum Section: String {
             return "Sports"
         case .technology:
             return "Technology"
+        case .entertainment:
+            return "Entertainment"
         }
     }
 }

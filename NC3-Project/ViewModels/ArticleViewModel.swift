@@ -16,7 +16,8 @@ class ArticleViewModel {
     @Published var healthToken: [Article] = []
     @Published var scienceToken: [Article] = []
     @Published var sportsToken: [Article] = []
-    
+    @Published var entertainmentToken: [Article] = []
+
     var cancellables: [AnyCancellable]!
     
     var headline: [Article] = []
@@ -25,6 +26,7 @@ class ArticleViewModel {
     var health: [Article] = []
     var science: [Article] = []
     var sports: [Article] = []
+    var entertainment: [Article] = []
     
     init() {
         fetchData()
@@ -62,6 +64,11 @@ class ArticleViewModel {
                 .sink(receiveCompletion: { (completion) in
                 }, receiveValue: { (news) in
                     self.sportsToken = news.articles ?? []
+                }),
+            Networking.fetchData(category: Section.entertainment)
+                .sink(receiveCompletion: { (completion) in
+                }, receiveValue: { (news) in
+                    self.entertainmentToken = news.articles ?? []
                 })
         ]
     }

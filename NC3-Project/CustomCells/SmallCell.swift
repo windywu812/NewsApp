@@ -41,7 +41,7 @@ class SmallCell: UICollectionViewCell {
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, dateLabel])
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
                 

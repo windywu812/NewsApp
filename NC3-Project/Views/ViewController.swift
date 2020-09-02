@@ -55,6 +55,17 @@ class ViewController: UIViewController {
             self.viewModel.science = articles
             self.applySnapshot()
         }.store(in: &cancellables)
+        
+        viewModel.$sportsToken.sink { (articles) in
+            self.viewModel.sports = articles
+            self.applySnapshot()
+        }.store(in: &cancellables)
+        
+        viewModel.$entertainmentToken.sink { (articles) in
+            self.viewModel.entertainment = articles
+            print(self.viewModel.entertainment.count)
+            self.applySnapshot()
+        }.store(in: &cancellables)
     }
     
     private func configureCollectionView() {
@@ -73,13 +84,15 @@ class ViewController: UIViewController {
         
         snapshot = NSDiffableDataSourceSnapshot<Section, Article>()
         
-        snapshot?.appendSections([.topHeadline, .business, .technology, .health, .science])
+        snapshot?.appendSections([.topHeadline, .business, .technology, .health, .science, .sports, .entertainment])
     
         snapshot?.appendItems(viewModel.headline, toSection: .topHeadline)
         snapshot?.appendItems(viewModel.business, toSection: .business)
         snapshot?.appendItems(viewModel.technology, toSection: .technology)
         snapshot?.appendItems(viewModel.health, toSection: .health)
         snapshot?.appendItems(viewModel.science, toSection: .science)
+        snapshot?.appendItems(viewModel.sports, toSection: .sports)
+        snapshot?.appendItems(viewModel.entertainment, toSection: .entertainment)
 
         dataSource?.apply(snapshot!, animatingDifferences: false)
     }
@@ -107,6 +120,14 @@ class ViewController: UIViewController {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallCell.reuseIdentifier, for: indexpath) as! SmallCell
                 cell.article = article
                 return cell
+            case 5:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexpath) as! LargeCell
+                cell.article = article
+                return cell
+            case 6:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallCell.reuseIdentifier, for: indexpath) as! SmallCell
+                cell.article = article
+                return cell
             default:
                 return nil
             }
@@ -126,6 +147,10 @@ class ViewController: UIViewController {
                 sectionHeader.title.text = Section.health.string
             case 4:
                 sectionHeader.title.text = Section.science.string
+            case 5:
+                sectionHeader.title.text = Section.sports.string
+            case 6:
+                sectionHeader.title.text = Section.entertainment.string
             default:
                 break
             }
@@ -142,6 +167,8 @@ class ViewController: UIViewController {
             case 1:
                 return self.createMediumCell()
             case 3:
+                return self.createLargeCell()
+            case 5:
                 return self.createMediumCell()
             default:
                 return self.createGroupCell()
@@ -225,6 +252,14 @@ extension ViewController: UICollectionViewDelegate {
         case 4:
             let vc = DetailViewController()
             vc.article = viewModel.science[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = DetailViewController()
+            vc.article = viewModel.sports[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        case 6:
+            let vc = DetailViewController()
+            vc.article = viewModel.entertainment[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         default:
             return
