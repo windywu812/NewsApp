@@ -34,6 +34,7 @@ class ArticleViewModel {
         cancellables = [
             Networking.fetchData(category: nil)
                 .sink(receiveCompletion: { (completion) in
+                    print(completion)
                 }, receiveValue: { (news) in
                     self.highlightToken = news.articles ?? []
                 }),

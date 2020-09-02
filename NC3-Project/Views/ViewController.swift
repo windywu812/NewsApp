@@ -206,30 +206,25 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-//            let vc = DetailViewController()
-//            vc.title = viewModel.headline[indexPath.row].title
-//            navigationController?.pushViewController(vc, animated: true)
-            print(viewModel.headline[indexPath.row].title)
+            let vc = DetailViewController()
+            vc.article = viewModel.headline[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         case 1:
-//            let vc = DetailViewController()
-//            vc.title = viewModel.business[indexPath.row].title
-//            navigationController?.pushViewController(vc, animated: true)
-            print(viewModel.business[indexPath.row].title)
+            let vc = DetailViewController()
+            vc.article = viewModel.business[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         case 2:
-//            let vc = DetailViewController()
-//            vc.title = viewModel.technology[indexPath.row].title
-//            navigationController?.pushViewController(vc, animated: true)
-            print(viewModel.technology[indexPath.row].title)
+            let vc = DetailViewController()
+            vc.article = viewModel.technology[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         case 3:
-//            let vc = DetailViewController()
-//            vc.title = viewModel.health[indexPath.row].title
-//            navigationController?.pushViewController(vc, animated: true)
-            print(viewModel.health[indexPath.row].title)
+            let vc = DetailViewController()
+            vc.article = viewModel.health[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         case 4:
-//            let vc = DetailViewController()
-//            vc.title = viewModel.science[indexPath.row].title
-//            navigationController?.pushViewController(vc, animated: true)
-            print(viewModel.science[indexPath.row].title)
+            let vc = DetailViewController()
+            vc.article = viewModel.science[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         default:
             return
         }
