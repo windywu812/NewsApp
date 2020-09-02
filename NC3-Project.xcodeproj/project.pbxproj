@@ -19,7 +19,7 @@
 		23960C7524FE5E2B0066273C /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23960C7424FE5E2B0066273C /* UIImageView+Extension.swift */; };
 		23F9A20B24FE1E3300BF3B2F /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20A24FE1E3300BF3B2F /* ArticleViewModel.swift */; };
 		23F9A20E24FE1E5A00BF3B2F /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20D24FE1E5A00BF3B2F /* Section.swift */; };
-		23F9A21024FE1E7F00BF3B2F /* HighlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20F24FE1E7F00BF3B2F /* HighlightCell.swift */; };
+		23F9A21024FE1E7F00BF3B2F /* LargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		23960C7424FE5E2B0066273C /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		23F9A20A24FE1E3300BF3B2F /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		23F9A20D24FE1E5A00BF3B2F /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		23F9A20F24FE1E7F00BF3B2F /* HighlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightCell.swift; sourceTree = "<group>"; };
+		23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 		23960C7324FE5D890066273C /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
-				23F9A20F24FE1E7F00BF3B2F /* HighlightCell.swift */,
+				23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */,
 				23960C7124FE5D830066273C /* HeaderCell.swift */,
 			);
 			path = CustomCells;
@@ -210,7 +210,7 @@
 				2369054524FA8A1F0035F0F0 /* ViewController.swift in Sources */,
 				2369054124FA8A1F0035F0F0 /* AppDelegate.swift in Sources */,
 				23960C6F24FE54FA0066273C /* String+Extension.swift in Sources */,
-				23F9A21024FE1E7F00BF3B2F /* HighlightCell.swift in Sources */,
+				23F9A21024FE1E7F00BF3B2F /* LargeCell.swift in Sources */,
 				2369055524FA95A80035F0F0 /* News.swift in Sources */,
 				23960C7224FE5D830066273C /* HeaderCell.swift in Sources */,
 				23960C7524FE5E2B0066273C /* UIImageView+Extension.swift in Sources */,

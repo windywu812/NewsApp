@@ -10,26 +10,41 @@ import Combine
 
 class ArticleViewModel {
     
-    @Published var highlightArticles: [Article] = []
-    @Published var generalArticles: [Article] = []
+    @Published var highlightToken: [Article] = []
+    @Published var businessToken: [Article] = []
+    @Published var technologyToken: [Article] = []
     
-    var highLightCancellable: AnyCancellable!
-    var generalCancellable: AnyCancellable!
+    var cancellables: [AnyCancellable]!
     
+    var headline: [Article] = []
+    var business: [Article] = []
+
     init() {
-        highLightCancellable = Networking.fetchData(category: nil)
-        .sink(receiveCompletion: { (completion) in
-            
-        }, receiveValue: { (news) in
-            self.highlightArticles = news.articles ?? []
-        })
-        
-        generalCancellable = Networking.fetchData(category: Section.general)
-            .sink(receiveCompletion: { (completion) in
-                print(completion)
-            }, receiveValue: { (news) in
-                self.generalArticles = news.articles ?? []
-            })
+        cancellables = [
+            Networking.fetchData(category: nil)
+                .sink(receiveCompletion: { (completion) in
+                    
+                }, receiveValue: { (news) in
+                    self.highlightToken = news.articles ?? []
+                }),
+            Networking.fetchData(category: Section.business)
+                .sink(receiveCompletion: { (completion) in
+                    
+                }, receiveValue: { (news) in
+                    self.businessToken = news.articles ?? []
+                }),
+            Networking.fetchData(category: Section.technology)
+                .sink(receiveCompletion: { (completion) in
+                    switch completion {
+                    case .finished:
+                        print("success")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }, receiveValue: { (news) in
+                    self
+                })
+        ]
     }
     
 }

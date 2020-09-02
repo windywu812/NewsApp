@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HighlightCell: UICollectionViewCell {
+class LargeCell: UICollectionViewCell {
     
     static var reuseIdentifier: String = "HighlightCell"
     

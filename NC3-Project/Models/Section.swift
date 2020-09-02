@@ -12,7 +12,6 @@ enum Section: String {
     case topHeadline
     case business
     case entertainment
-    case general
     case health
     case science
     case sports
@@ -24,8 +23,6 @@ enum Section: String {
             return "Top Headlines"
         case .business:
             return "Business"
-        case .general:
-            return "General"
         case .entertainment:
             return "Entertainment"
         case .health:
