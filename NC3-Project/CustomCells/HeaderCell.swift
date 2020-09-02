@@ -18,21 +18,13 @@ class HeaderCell: UICollectionViewCell {
         super.init(frame: frame)
         
         title.textColor = .label
-        title.font = .preferredFont(forTextStyle: .title3)
+        title.font = .systemFont(ofSize: 20, weight: .semibold)
         title.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(title)
-        
-        let separator = UIView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.backgroundColor = .tertiaryLabel
-        contentView.addSubview(separator)
-        
+     
         NSLayoutConstraint.activate([
-            separator.heightAnchor.constraint(equalToConstant: 1),
-            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            title.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 8)
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
     }

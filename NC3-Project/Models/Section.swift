@@ -11,11 +11,10 @@ import Foundation
 enum Section: String {
     case topHeadline
     case business
-    case entertainment
+    case technology
     case health
     case science
     case sports
-    case technology
     
     var string: String {
         switch self {
@@ -23,8 +22,6 @@ enum Section: String {
             return "Top Headlines"
         case .business:
             return "Business"
-        case .entertainment:
-            return "Entertainment"
         case .health:
             return "Health"
         case .science:

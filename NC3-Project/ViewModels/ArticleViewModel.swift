@@ -13,36 +13,54 @@ class ArticleViewModel {
     @Published var highlightToken: [Article] = []
     @Published var businessToken: [Article] = []
     @Published var technologyToken: [Article] = []
+    @Published var healthToken: [Article] = []
+    @Published var scienceToken: [Article] = []
+    @Published var sportsToken: [Article] = []
     
     var cancellables: [AnyCancellable]!
     
     var headline: [Article] = []
     var business: [Article] = []
-
+    var technology: [Article] = []
+    var health: [Article] = []
+    var science: [Article] = []
+    var sports: [Article] = []
+    
     init() {
+        fetchData()
+    }
+    
+    private func fetchData() {
         cancellables = [
             Networking.fetchData(category: nil)
                 .sink(receiveCompletion: { (completion) in
-                    
                 }, receiveValue: { (news) in
                     self.highlightToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.business)
                 .sink(receiveCompletion: { (completion) in
-                    
                 }, receiveValue: { (news) in
                     self.businessToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.technology)
                 .sink(receiveCompletion: { (completion) in
-                    switch completion {
-                    case .finished:
-                        print("success")
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
                 }, receiveValue: { (news) in
-                    self
+                    self.technologyToken = news.articles ?? []
+                }),
+            Networking.fetchData(category: Section.health)
+                .sink(receiveCompletion: { (completion) in
+                }, receiveValue: { (news) in
+                    self.healthToken = news.articles ?? []
+                }),
+            Networking.fetchData(category: Section.science)
+                .sink(receiveCompletion: { (completion) in
+                }, receiveValue: { (news) in
+                    self.scienceToken = news.articles ?? []
+                }),
+            Networking.fetchData(category: Section.sports)
+                .sink(receiveCompletion: { (completion) in
+                }, receiveValue: { (news) in
+                    self.sportsToken = news.articles ?? []
                 })
         ]
     }

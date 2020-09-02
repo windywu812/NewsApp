@@ -15,6 +15,7 @@ struct News: Decodable, Hashable {
 }
 
 struct Article: Decodable, Hashable {
+    let id = UUID()
     let author: String?
     let title: String?
     let description: String?

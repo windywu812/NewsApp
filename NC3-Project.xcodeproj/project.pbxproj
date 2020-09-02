@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		236697FB24FF8F130003394B /* SmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236697FA24FF8F130003394B /* SmallCell.swift */; };
 		2369054124FA8A1F0035F0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369054024FA8A1F0035F0F0 /* AppDelegate.swift */; };
 		2369054324FA8A1F0035F0F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369054224FA8A1F0035F0F0 /* SceneDelegate.swift */; };
 		2369054524FA8A1F0035F0F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369054424FA8A1F0035F0F0 /* ViewController.swift */; };
@@ -17,12 +18,14 @@
 		23960C6F24FE54FA0066273C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23960C6E24FE54FA0066273C /* String+Extension.swift */; };
 		23960C7224FE5D830066273C /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23960C7124FE5D830066273C /* HeaderCell.swift */; };
 		23960C7524FE5E2B0066273C /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23960C7424FE5E2B0066273C /* UIImageView+Extension.swift */; };
+		23A23F2524FF62B90010C480 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A23F2424FF62B90010C480 /* DetailViewController.swift */; };
 		23F9A20B24FE1E3300BF3B2F /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20A24FE1E3300BF3B2F /* ArticleViewModel.swift */; };
 		23F9A20E24FE1E5A00BF3B2F /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20D24FE1E5A00BF3B2F /* Section.swift */; };
 		23F9A21024FE1E7F00BF3B2F /* LargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		236697FA24FF8F130003394B /* SmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCell.swift; sourceTree = "<group>"; };
 		2369053D24FA8A1F0035F0F0 /* NC3-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NC3-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2369054024FA8A1F0035F0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2369054224FA8A1F0035F0F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		23960C6E24FE54FA0066273C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		23960C7124FE5D830066273C /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		23960C7424FE5E2B0066273C /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		23A23F2424FF62B90010C480 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		23F9A20A24FE1E3300BF3B2F /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		23F9A20D24FE1E5A00BF3B2F /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCell.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2369054424FA8A1F0035F0F0 /* ViewController.swift */,
+				23A23F2424FF62B90010C480 /* DetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			children = (
 				23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */,
 				23960C7124FE5D830066273C /* HeaderCell.swift */,
+				236697FA24FF8F130003394B /* SmallCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -209,11 +215,13 @@
 				2369055924FA95CC0035F0F0 /* Networking.swift in Sources */,
 				2369054524FA8A1F0035F0F0 /* ViewController.swift in Sources */,
 				2369054124FA8A1F0035F0F0 /* AppDelegate.swift in Sources */,
+				23A23F2524FF62B90010C480 /* DetailViewController.swift in Sources */,
 				23960C6F24FE54FA0066273C /* String+Extension.swift in Sources */,
 				23F9A21024FE1E7F00BF3B2F /* LargeCell.swift in Sources */,
 				2369055524FA95A80035F0F0 /* News.swift in Sources */,
 				23960C7224FE5D830066273C /* HeaderCell.swift in Sources */,
 				23960C7524FE5E2B0066273C /* UIImageView+Extension.swift in Sources */,
+				236697FB24FF8F130003394B /* SmallCell.swift in Sources */,
 				23F9A20E24FE1E5A00BF3B2F /* Section.swift in Sources */,
 				23F9A20B24FE1E3300BF3B2F /* ArticleViewModel.swift in Sources */,
 				2369054324FA8A1F0035F0F0 /* SceneDelegate.swift in Sources */,

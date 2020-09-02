@@ -1,17 +1,17 @@
 //
-//  HighlightCell.swift
+//  SmallCell.swift
 //  NC3-Project
 //
-//  Created by Windy on 01/09/20.
+//  Created by Windy on 02/09/20.
 //  Copyright © 2020 Windy. All rights reserved.
 //
 
 import UIKit
 
-class LargeCell: UICollectionViewCell {
+class SmallCell: UICollectionViewCell {
     
-    static var reuseIdentifier: String = "HighlightCell"
-    
+    static let reuseIdentifier = "SmallCell"
+        
     var article: Article! {
         didSet {
             titleLabel.text = article.title
@@ -44,17 +44,16 @@ class LargeCell: UICollectionViewCell {
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
-        
+                
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.75),
-            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.4),
+            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
+            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
     
