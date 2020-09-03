@@ -18,13 +18,12 @@ class ViewController: UIViewController {
     var viewModel = ArticleViewModel()
     
     private var cancellables: Set<AnyCancellable> = []
- 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Indo News"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
         
         configureCollectionView()
         bindViewModel()
