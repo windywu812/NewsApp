@@ -12,7 +12,7 @@ import Combine
 class ViewController: UIViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Article>?
-    var snapshot: NSDiffableDataSourceSnapshot<Section, Article>?
+    var snapshot: NSDiffableDataSourceSnapshot<Section, Article>!
     var collectionView: UICollectionView!
     
     var viewModel = ArticleViewModel()
@@ -93,44 +93,36 @@ class ViewController: UIViewController {
         snapshot?.appendItems(viewModel.sports, toSection: .sports)
         snapshot?.appendItems(viewModel.entertainment, toSection: .entertainment)
 
-        dataSource?.apply(snapshot!, animatingDifferences: false)
+        dataSource?.apply(snapshot, animatingDifferences: false)
     }
 
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexpath, article) -> UICollectionViewCell? in
             switch indexpath.section {
             case 0:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexpath) as! LargeCell
-                cell.article = article
-                return cell
+                return configureCell(LargeCell.self, with: article, for: indexpath)
             case 1:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexpath) as! LargeCell
-                cell.article = article
-                return cell
+                return configureCell(LargeCell.self, with: article, for: indexpath)
             case 2:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallCell.reuseIdentifier, for: indexpath) as! SmallCell
-                cell.article = article
-                return cell
+                return configureCell(SmallCell.self, with: article, for: indexpath)
             case 3:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexpath) as! LargeCell
-                cell.article = article
-                return cell
+                return configureCell(LargeCell.self, with: article, for: indexpath)
             case 4:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallCell.reuseIdentifier, for: indexpath) as! SmallCell
-                cell.article = article
-                return cell
+                return configureCell(SmallCell.self, with: article, for: indexpath)
             case 5:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexpath) as! LargeCell
-                cell.article = article
-                return cell
+                return configureCell(LargeCell.self, with: article, for: indexpath)
             case 6:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallCell.reuseIdentifier, for: indexpath) as! SmallCell
-                cell.article = article
-                return cell
+                return configureCell(SmallCell.self, with: article, for: indexpath)
             default:
                 return nil
             }
         })
+        
+        func configureCell<T: ConfigureCellProtocol>(_ cellType: T.Type, with article: Article, for indexPath: IndexPath) -> T {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseIdentifier, for: indexPath) as? T else { fatalError("Unable to deque \(cellType)") }
+            cell.configure(article: article)
+            return cell
+        }
         
         dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
@@ -174,7 +166,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+        
     private func createLargeCell() -> NSCollectionLayoutSection {
         let layoutItem = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
@@ -221,10 +213,10 @@ class ViewController: UIViewController {
     }
     
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-          let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-          layoutSectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 20)
-          return layoutSectionHeader
-      }
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        layoutSectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 20)
+        return layoutSectionHeader
+    }
     
 }
 
@@ -233,36 +225,29 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            let vc = DetailViewController()
-            vc.article = viewModel.headline[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.headline[indexPath.row])
         case 1:
-            let vc = DetailViewController()
-            vc.article = viewModel.business[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.business[indexPath.row])
         case 2:
-            let vc = DetailViewController()
-            vc.article = viewModel.technology[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.technology[indexPath.row])
         case 3:
-            let vc = DetailViewController()
-            vc.article = viewModel.health[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.health[indexPath.row])
         case 4:
-            let vc = DetailViewController()
-            vc.article = viewModel.science[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.science[indexPath.row])
         case 5:
-            let vc = DetailViewController()
-            vc.article = viewModel.sports[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.sports[indexPath.row])
         case 6:
-            let vc = DetailViewController()
-            vc.article = viewModel.entertainment[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
+            pushViewController(article: viewModel.entertainment[indexPath.row])
         default:
-            return
+            return 
         }
     }
     
+    func pushViewController(article: Article) {
+        let vc = DetailViewController()
+        vc.article = article
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
+

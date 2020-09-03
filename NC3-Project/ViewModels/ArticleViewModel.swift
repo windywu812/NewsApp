@@ -35,38 +35,37 @@ class ArticleViewModel {
     private func fetchData() {
         cancellables = [
             Networking.fetchData(category: nil)
-                .sink(receiveCompletion: { (completion) in
-                    print(completion)
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.highlightToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.business)
-                .sink(receiveCompletion: { (completion) in
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.businessToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.technology)
-                .sink(receiveCompletion: { (completion) in
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.technologyToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.health)
-                .sink(receiveCompletion: { (completion) in
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.healthToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.science)
-                .sink(receiveCompletion: { (completion) in
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.scienceToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.sports)
-                .sink(receiveCompletion: { (completion) in
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.sportsToken = news.articles ?? []
                 }),
             Networking.fetchData(category: Section.entertainment)
-                .sink(receiveCompletion: { (completion) in
+                .sink(receiveCompletion: { (_) in
                 }, receiveValue: { (news) in
                     self.entertainmentToken = news.articles ?? []
                 })

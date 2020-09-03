@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2363363A25009DC200EBB615 /* ConfigureCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363363925009DC200EBB615 /* ConfigureCellProtocol.swift */; };
 		236697FB24FF8F130003394B /* SmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236697FA24FF8F130003394B /* SmallCell.swift */; };
 		2369054124FA8A1F0035F0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369054024FA8A1F0035F0F0 /* AppDelegate.swift */; };
 		2369054324FA8A1F0035F0F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369054224FA8A1F0035F0F0 /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2363363925009DC200EBB615 /* ConfigureCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureCellProtocol.swift; sourceTree = "<group>"; };
 		236697FA24FF8F130003394B /* SmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCell.swift; sourceTree = "<group>"; };
 		2369053D24FA8A1F0035F0F0 /* NC3-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NC3-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2369054024FA8A1F0035F0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2363363B25009DC600EBB615 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2363363925009DC200EBB615 /* ConfigureCellProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		2369053424FA8A1F0035F0F0 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 			children = (
 				2369054024FA8A1F0035F0F0 /* AppDelegate.swift */,
 				2369054224FA8A1F0035F0F0 /* SceneDelegate.swift */,
+				2363363B25009DC600EBB615 /* Protocols */,
 				23960C7024FE57510066273C /* Extensions */,
 				2369055A24FA961C0035F0F0 /* Services */,
 				2369055624FA95B40035F0F0 /* Models */,
@@ -128,8 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				23F9A20F24FE1E7F00BF3B2F /* LargeCell.swift */,
-				23960C7124FE5D830066273C /* HeaderCell.swift */,
 				236697FA24FF8F130003394B /* SmallCell.swift */,
+				23960C7124FE5D830066273C /* HeaderCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 				2369054524FA8A1F0035F0F0 /* ViewController.swift in Sources */,
 				2369054124FA8A1F0035F0F0 /* AppDelegate.swift in Sources */,
 				23A23F2524FF62B90010C480 /* DetailViewController.swift in Sources */,
+				2363363A25009DC200EBB615 /* ConfigureCellProtocol.swift in Sources */,
 				23960C6F24FE54FA0066273C /* String+Extension.swift in Sources */,
 				23F9A21024FE1E7F00BF3B2F /* LargeCell.swift in Sources */,
 				2369055524FA95A80035F0F0 /* News.swift in Sources */,

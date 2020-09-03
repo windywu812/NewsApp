@@ -8,19 +8,9 @@
 
 import UIKit
 
-class LargeCell: UICollectionViewCell {
+class LargeCell: UICollectionViewCell, ConfigureCellProtocol {
     
     static var reuseIdentifier: String = "HighlightCell"
-    
-    var article: Article! {
-        didSet {
-            titleLabel.text = article.title
-            dateLabel.text = article.publishedAt?.changeDateFormat()
-            if let imageURL = article.urlToImage {
-                imageView.setImage(urlString: imageURL)
-            }
-        }
-    }
     
     let imageView = UIImageView()
     let titleLabel = UILabel()
@@ -56,6 +46,14 @@ class LargeCell: UICollectionViewCell {
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
+    }
+    
+    func configure(article: Article) {
+        titleLabel.text = article.title
+        dateLabel.text = article.publishedAt?.changeDateFormat()
+        if let imageURL = article.urlToImage {
+            imageView.setImage(urlString: imageURL)
+        }
     }
     
     required init?(coder: NSCoder) {

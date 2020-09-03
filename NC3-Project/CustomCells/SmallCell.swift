@@ -8,20 +8,10 @@
 
 import UIKit
 
-class SmallCell: UICollectionViewCell {
+class SmallCell: UICollectionViewCell, ConfigureCellProtocol {
     
     static let reuseIdentifier = "SmallCell"
         
-    var article: Article! {
-        didSet {
-            titleLabel.text = article.title
-            dateLabel.text = article.publishedAt?.changeDateFormat()
-            if let imageURL = article.urlToImage {
-                imageView.setImage(urlString: imageURL)
-            }
-        }
-    }
-    
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let dateLabel = UILabel()
@@ -55,6 +45,14 @@ class SmallCell: UICollectionViewCell {
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
+    }
+    
+    func configure(article: Article) {
+        titleLabel.text = article.title
+        dateLabel.text = article.publishedAt?.changeDateFormat()
+        if let imageURL = article.urlToImage {
+            imageView.setImage(urlString: imageURL)
+        }
     }
     
     required init?(coder: NSCoder) {

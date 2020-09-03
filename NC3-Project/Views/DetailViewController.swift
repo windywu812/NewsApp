@@ -29,16 +29,11 @@ class DetailViewController: UIViewController {
     let imageView = UIImageView()
     let contentLabel = UILabel()
     let button = UIButton(type: .system)
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//        navigationItem.title = ""
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .systemBackground
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +75,7 @@ class DetailViewController: UIViewController {
         let margin = view.layoutMarginsGuide
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
             scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
