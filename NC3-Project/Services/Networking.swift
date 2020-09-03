@@ -12,7 +12,7 @@ import Combine
 class Networking {
     
     /// Get your API KEY in https://newsapi.org
-    static let API_KEY: String = "18db9968c5724d38975dd1208bd86288"
+    static let API_KEY: String = "YOUR_API_KEY"
 
     static let imageCache = NSCache<AnyObject, AnyObject>()
 
