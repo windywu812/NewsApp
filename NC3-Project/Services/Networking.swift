@@ -11,6 +11,9 @@ import Combine
 
 class Networking {
     
+    /// Get your API KEY in https://newsapi.org
+    static let API_KEY: String = "YOUR_API_KEY"
+    
     static let imageCache = NSCache<AnyObject, AnyObject>()
 
     static func fetchData(country: String = "id", category: Section?) -> AnyPublisher<News, Error> {
@@ -18,7 +21,7 @@ class Networking {
         urlComponent?.queryItems = [
             URLQueryItem(name: "country", value: country),
             URLQueryItem(name: "category", value: category?.rawValue),
-            URLQueryItem(name: "apiKey", value: "18db9968c5724d38975dd1208bd86288")
+            URLQueryItem(name: "apiKey", value: Networking.API_KEY)
         ]
         
         return URLSession.shared
